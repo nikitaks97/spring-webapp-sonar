@@ -62,11 +62,11 @@
 				<target>17</target>
 			</configuration>
 		</plugin>
-		<plugin>
-              <groupId>org.codehaus.mojo</groupId>
-              <artifactId>sonar-maven-plugin</artifactId>
-              <version>3.0.2</version>
-       </plugin>
+		    <plugin>
+            <groupId>org.sonarsource.scanner.maven</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>3.8.0.2131</version>
+        </plugin>
 		</plugins>
 	</build>
 
