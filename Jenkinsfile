@@ -33,7 +33,7 @@ pipeline {
         }
         stage('SonarQube Analysis') {
             steps {
-            sh' mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.token={SONAR_TOKEN} --no-transfer-progress  -Denforcer.skip=true'
+            sh' mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.token=${SONAR_TOKEN} --no-transfer-progress  -Denforcer.skip=true'
                 }
             }
         stage('Quality Gate') {
