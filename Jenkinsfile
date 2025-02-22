@@ -33,12 +33,14 @@ pipeline {
         }
         stage('SonarQube Analysis') {
             steps {
-            sh' mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.token=${SONAR_TOKEN} --no-transfer-progress  -Denforcer.skip=true'
+             withSonarQubeEnv('sonarqube-server') {
+             sh'mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.token=${SONAR_TOKEN} --no-transfer-progress  -Denforcer.skip=true'
                 }
             }
-       /* stage('Quality Gate') {
+        }
+        stage('Quality Gate') {
             steps {
-                timeout(time: 15, unit: 'MINUTES') {
+                timeout(time: 20, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
                 }
             }
@@ -48,6 +50,6 @@ pipeline {
                 sh 'mvn package -DskipTests --no-transfer-progress  -Denforcer.skip=true'
             }
 
-           } */
+           } 
         }
     }
